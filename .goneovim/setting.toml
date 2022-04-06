@@ -1,0 +1,9 @@
+[Editor]
+FontFamily = "CaskaydiaCove Nerd Font Mono"
+FontSize = 14
+DisableLigatures = false 
+SmoothScroll = true
+ClickEffect = true
+
+[Cursor]
+SmoothMove = true
