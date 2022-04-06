@@ -1,0 +1,17 @@
+{
+    "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+    "tsserver.log": "verbose",
+    "tsserver.trace.server": "verbose",
+    "suggest.echodocSupport": true,
+    "suggest.maxCompleteItemCount": 20,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "javascriptreact",
+        "typescript.tsx"
+    ],
+    "diagnostic.errorSign": "•",
+    "prettier.tabWidth": 4
+}
