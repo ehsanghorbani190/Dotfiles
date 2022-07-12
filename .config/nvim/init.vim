@@ -41,19 +41,20 @@ Plug 'preservim/tagbar' " See vars and other stuff for file
 Plug 'tpope/vim-surround' " Surrounding ysw)
 Plug 'alvan/vim-closetag' " Auto closing tags
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'joshdick/onedark.vim'
 Plug 'styled-components/vim-styled-components'
 Plug 'ap/vim-css-color'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'wakatime/vim-wakatime'
-" Plug 'SirVer/ultisnips'
-" Plug 'epilande/vim-react-snippets'
+Plug 'dstein64/vim-startuptime'
+Plug 'derektata/lorem.nvim'
+Plug 'vim-scripts/loremipsum'
 call plug#end()
 
 " Extensions Configs
-colorscheme embark 
+colorscheme onedark
 
-let g:airline_theme= 'embark'
+let g:airline_theme= 'onedark'
 let g:airline#extensions#tabline#enabled = 1 " Enable airline for tabbar
 
 " Auto close tag config
@@ -81,3 +82,7 @@ let g:closetag_regions = {
 
 " Add > at current position without closing the current tag, default is ''
 let g:closetag_close_shortcut = '<leader>>'
+" setup lorem.nvim
+lua <<EOF
+require'lorem-nvim'.setup()
+EOF
