@@ -1,9 +1,0 @@
-[Editor]
-FontFamily = "Cascadia Code"
-FontSize = 14
-DisableLigatures = false 
-SmoothScroll = true
-ClickEffect = true
-
-[Cursor]
-SmoothMove = true
