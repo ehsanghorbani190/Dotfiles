@@ -8,7 +8,7 @@ set smarttab
 set softtabstop=4
 set mouse=a
 set wildignore+=*/node_modules/*,.*,*/.git/*,*/dist/*
-" set guifont=CaskaydiaCove\ Nerd\ Font\ Mono
+set guifont=Iosevka_Nerd_Font:h14
 " Custom KeyMappings
 inoremap ii <ESC>
 tnoremap ii <C-\><C-N> 
