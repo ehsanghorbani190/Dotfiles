@@ -184,9 +184,13 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status-rs
 		font pango:Hack Nerd Font Regular 10
+		tray_padding 0 
 }
 #remove title bars
 for_window [class="^.*"] border pixel 2 
+
+#PopUp windows
+for_window [class="FTerm"] floating enable
 
 #Restore nitrogen for wallpaper
 exec --no-startup-id nitrogen --restore
@@ -205,3 +209,9 @@ bindsym Print exec --no-startup-id shotgun ~/Pictures/$(date +%F_%T).png
 bindsym Ctrl+Print exec --no-startup-id shotgun - | xclip -t 'image/png' -selection clipboard
 bindsym $mod+Print exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") ~/Pictures/$(date +%F_%T).png
 bindsym $mod+Ctrl+Print exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
+
+#start with numlock on
+exec_always --no-startup-id numlockx on
+
+#i3-autolayout to have autolayouting
+exec_always --no-startup-id i3-autolayout autolayout
