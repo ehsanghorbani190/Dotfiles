@@ -2,7 +2,6 @@
     "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
     "tsserver.log": "verbose",
     "tsserver.trace.server": "verbose",
-    "suggest.echodocSupport": true,
     "suggest.maxCompleteItemCount": 20,
     "coc.preferences.formatOnSaveFiletypes": [
         "javascript",
