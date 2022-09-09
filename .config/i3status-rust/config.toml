@@ -39,18 +39,22 @@ aur_command = "paru -Qua"
 block = "net"
 interval = 5
 format = "{ssid}:{signal_strength} {speed_up} {speed_down}"
+
 [[block]]
 block = "battery"
 driver = "upower"
 format = "{percentage} {time} hrs"
+
 [[block]]
 block = "weather"
 format = "{weather} ({location}) {temp}"
 service = { name = "openweathermap", api_key = "f47f4069e6b2e0459e5a88e20efcd231", city_id = "140463", units = "metric" }
+
 [[block]]
 block = "sound"
 max_vol = 200
 headphones_indicator = true
+on_click = "alacritty --class Alacritty,FTerm -e pulsemixer"
 
 [[block]]
 block = "keyboard_layout"
