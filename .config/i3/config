@@ -205,13 +205,19 @@ hide_edge_borders vertical
 bindsym $mod+b exec --no-startup-id dmenu-bluetooth -p "Bluetooth " -fn "Iosevka Nerd Font-12" -nb "#0c2461" -nf "#dcdde1" -sb "#5352ed" -sf "#f1f2f6"
 
 #Take screenshot using shotgun and hacksaw
-bindsym Print exec --no-startup-id shotgun ~/Pictures/$(date +%F_%T).png
-bindsym Ctrl+Print exec --no-startup-id shotgun - | xclip -t 'image/png' -selection clipboard
-bindsym $mod+Print exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") ~/Pictures/$(date +%F_%T).png
-bindsym $mod+Ctrl+Print exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
+bindsym F6 exec --no-startup-id shotgun ~/Pictures/$(date +%F_%T).png
+bindsym Ctrl+F6 exec --no-startup-id shotgun - | xclip -t 'image/png' -selection clipboard
+bindsym $mod+F6 exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") ~/Pictures/$(date +%F_%T).png
+bindsym $mod+Ctrl+F6 exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
 
 #start with numlock on
 exec_always --no-startup-id numlockx on
 
 #i3-autolayout to have autolayouting
 exec_always --no-startup-id i3-autolayout autolayout
+
+exec_always --no-startup-id thunar --daemon
+
+#Brightness controll
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
