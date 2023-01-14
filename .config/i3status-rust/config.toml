@@ -38,7 +38,8 @@ aur_command = "paru -Qua"
 [[block]]
 block = "net"
 interval = 5
-format = "{ssid}:{signal_strength} {speed_up} {speed_down}"
+device = "wlo1"
+format = "{speed_up} {speed_down}"
 
 [[block]]
 block = "battery"
