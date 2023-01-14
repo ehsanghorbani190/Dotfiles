@@ -182,7 +182,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status-rs
+        status_command "i3status-rs --never-pause"
 		font pango:Hack Nerd Font Regular 10
 		tray_padding 0 
 }
@@ -221,3 +221,11 @@ exec_always --no-startup-id thunar --daemon
 #Brightness controll
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+#Gestures daemon
+exec_always --no-startup-id libinput-gestures
+#notification server
+exec_always --no-startup-id dunst
+#lock shortcut
+bindsym $mod+Ctrl+l exec --no-startup-id i3lockmore --blur 5 --pixelate 50 -ef
+#redshift for warmer colors
+exec_always --no-startup-id redshift-qt -l 36.310699:59.599457
