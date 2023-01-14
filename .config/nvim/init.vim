@@ -1,6 +1,7 @@
 let mapleader = " "
 " Setting Options
 syntax on 
+set hidden
 set number
 set autoindent
 set tabstop=4
@@ -9,7 +10,7 @@ set smarttab
 set softtabstop=4
 set mouse=a
 set wildignore+=*/node_modules/*,.*,*/.git/*,*/dist/*
-set guifont=CaskaydiaCove\ Nerd\ Font\ Complete:h14
+set guifont=FiraCode-Regular:h13
 " Custom KeyMappings
 inoremap ii <ESC>
 tnoremap ii <C-\><C-N> 

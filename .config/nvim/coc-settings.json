@@ -3,14 +3,16 @@
     "tsserver.log": "verbose",
     "tsserver.trace.server": "verbose",
     "suggest.maxCompleteItemCount": 20,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "typescript",
-        "typescriptreact",
-        "json",
-        "javascriptreact",
-        "typescript.tsx"
-    ],
+    "coc.preferences.formatOnSave": false,
+    // "coc.preferences.formatOnSaveFiletypes": [
+    //     "javascript",
+    //     "typescript",
+    //     "typescriptreact",
+    //     "json",
+    //     "javascriptreact",
+    //     "typescript.tsx"
+    // ],
     "diagnostic.errorSign": "•",
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "eslint.enable": false
 }
