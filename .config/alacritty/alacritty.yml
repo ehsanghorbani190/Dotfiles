@@ -7,7 +7,7 @@
 
 ## Import files (Colors, Fonts, Etc)
 import:
-  - ~/.config/alacritty/colors.yml
+  - ~/.config/alacritty/colorschemes/Afterglow.yaml
   - ~/.config/alacritty/fonts.yml
 
 ## Set environment variables
