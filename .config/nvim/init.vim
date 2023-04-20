@@ -22,7 +22,7 @@ noremap <Right> <nop>
 noremap <leader>h :bp<CR>
 noremap <leader>l :bn<CR>
 noremap <leader>c :bd<CR>
-nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <C-l> :CocCommand eslint.executeAutofix<CR>
 "nnoremap <C-t> :TagbarToggle<CR>
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -63,13 +63,15 @@ Plug 'Badacadabra/vim-archery'
 Plug 'segeljakt/vim-silicon'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/everforest'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 " Extensions Configs
 " let g:oceanic_next_terminal_bold = 1
 " let g:oceanic_next_terminal_italic = 1
-let g:everforest_better_performance = 1
-colorscheme everforest 
+" let g:everforest_better_performance = 1
+colorscheme nightfox 
 
 let g:airline_theme='everforest'
 let g:airline#extensions#tabline#enabled = 2 " Enable airline for tabbar

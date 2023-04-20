@@ -14,5 +14,7 @@
     // ],
     "diagnostic.errorSign": "•",
     "prettier.tabWidth": 4,
-    "eslint.enable": false
+    "eslint.enable": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5"
 }
