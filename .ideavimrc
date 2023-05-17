@@ -1,0 +1,22 @@
+let mapleader = " "
+" Setting Options
+syntax on 
+set hidden
+set number
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set mouse=a
+" Custom KeyMappings
+inoremap ii <ESC>
+tnoremap ii <C-\><C-N> 
+noremap <Up> <nop>
+noremap <Down> <nop>
+nnoremap <C-s> :w<CR>
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <leader>h :bp<CR>
+noremap <leader>l :bn<CR>
+noremap <leader>c :bd<CR>
