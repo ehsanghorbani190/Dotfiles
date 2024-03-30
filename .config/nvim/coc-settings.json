@@ -16,5 +16,7 @@
     "prettier.tabWidth": 4,
     "eslint.enable": true,
     "prettier.singleQuote": true,
-    "prettier.trailingComma": "es5"
+    "prettier.trailingComma": "es5",
+    "prettier.semi": true,
+    "snippets.ultisnips.pythonPrompt": false
 }
