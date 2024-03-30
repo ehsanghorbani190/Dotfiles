@@ -2,6 +2,7 @@ general{
 	interval = 1
 }
 
+order += "disk /home"
 order += "disk /"
 order += "wireless wlo1"
 order += "battery 0"
@@ -14,6 +15,10 @@ order += "tztime local"
 wireless wlo1 {
         format_up = "W: (%quality at %essid, %bitrate) %ip"
         format_down = "W: down"
+}
+ethernet enp0s20f0u4{
+	format_up = "Ethernet: (%quality at %essid, %bitrate) %ip"
+	        format_down = ""
 }
 
 volume master {
@@ -54,8 +59,12 @@ memory {
         format_degraded = "MEMORY: %free"
 }
 
+disk "/home" {
+        format = "🗄️ %free"
+}
+
 disk "/" {
-        format = "%free free of %total"
+        format = "🧰 %free"
 }
 
 read_file uptime {

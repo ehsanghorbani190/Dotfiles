@@ -28,11 +28,11 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lockmore --blur 5 --pixelate 20 -ef --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -199,7 +199,8 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id "setxkbmap -layout us,ir -option grp:alt_shift_toggle"
 
 #hide edge borders
-hide_edge_borders vertical
+hide_edge_borders horizontal
+hide_edge_borders vertical 
 
 #Run bluetooth manager
 bindsym $mod+b exec --no-startup-id dmenu-bluetooth -p "Bluetooth " -fn "Iosevka Nerd Font-12" -nb "#0c2461" -nf "#dcdde1" -sb "#5352ed" -sf "#f1f2f6"
@@ -211,21 +212,31 @@ bindsym $mod+F6 exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") ~/Pictu
 bindsym $mod+Ctrl+F6 exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") - | xclip -t 'image/png' -selection clipboard
 
 #start with numlock on
-exec_always --no-startup-id numlockx on
+# exec_always --no-startup-id numlockx on
 
 #i3-autolayout to have autolayouting
-exec_always --no-startup-id i3-autolayout autolayout
+exec --no-startup-id i3-autolayout autolayout
 
-exec_always --no-startup-id thunar --daemon
+exec --no-startup-id thunar --daemon
 
 #Brightness controll
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 #Gestures daemon
-exec_always --no-startup-id libinput-gestures
+exec --no-startup-id libinput-gestures
 #notification server
-exec_always --no-startup-id dunst
+exec --no-startup-id dunst
 #lock shortcut
-bindsym $mod+Ctrl+l exec --no-startup-id i3lockmore --blur 5 --pixelate 50 -ef
+bindsym $mod+Ctrl+l exec --no-startup-id i3lockmore --blur 5 --pixelate 20 -ef
 #redshift for warmer colors
-exec_always --no-startup-id redshift-qt -l 36.310699:59.599457
+exec --no-startup-id redshift-qt -l 36.310699:59.599457
+
+exec --no-startup-id obsidian
+exec --no-startup-id blueman-manager
+
+#for auth dialogs
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+#launch picom, a minimalistic compositor
+exec --no-startup-id picom --config /home/t1m3runn3r2359/.config/picom.conf
+
