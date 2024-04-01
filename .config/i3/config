@@ -187,7 +187,7 @@ bar {
 		tray_padding 0 
 }
 #remove title bars
-for_window [class="^.*"] border pixel 2 
+for_window [class="^.*"] border pixel 0 
 
 #PopUp windows
 for_window [class="FTerm"] floating enable
@@ -240,3 +240,4 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #launch picom, a minimalistic compositor
 exec --no-startup-id picom --config /home/t1m3runn3r2359/.config/picom.conf
 
+gaps inner 10
