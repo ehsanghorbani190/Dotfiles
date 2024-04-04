@@ -1,4 +1,4 @@
-import = ["/home/t1m3runn3r2359/.config/alacritty/colorschemes/Afterglow.toml", "/home/t1m3runn3r2359/.config/alacritty/fonts.toml"]
+import = [ "/home/t1m3runn3r2359/.config/alacritty/fonts.toml"]
 live_config_reload = true
 
 [cursor]
