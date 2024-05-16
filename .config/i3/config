@@ -232,7 +232,7 @@ bindsym $mod+Ctrl+l exec --no-startup-id i3lockmore --blur 5 --pixelate 20 -ef
 exec --no-startup-id redshift-qt -l 36.310699:59.599457
 
 exec --no-startup-id obsidian
-exec --no-startup-id blueman-manager
+exec --no-startup-id blueman-applet
 
 #for auth dialogs
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
