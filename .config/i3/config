@@ -217,8 +217,6 @@ bindsym $mod+Ctrl+F6 exec --no-startup-id shotgun $(hacksaw -f "-i %i -g %g") - 
 #i3-autolayout to have autolayouting
 exec --no-startup-id i3-autolayout autolayout
 
-exec --no-startup-id thunar --daemon
-
 #Brightness controll
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
