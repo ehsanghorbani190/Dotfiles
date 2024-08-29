@@ -4,7 +4,7 @@ general{
 
 order += "disk /home"
 order += "disk /"
-order += "wireless wlo1"
+order += "wireless _first_"
 order += "battery 0"
 order += "cpu_temperature 0"
 order += "memory"
@@ -12,11 +12,11 @@ order += "load"
 order += "volume master"
 order += "tztime local"
 
-wireless wlo1 {
+wireless _first_ {
         format_up = "W: (%quality at %essid, %bitrate) %ip"
         format_down = "W: down"
 }
-ethernet enp0s20f0u4{
+ethernet _first_ {
 	format_up = "Ethernet: (%quality at %essid, %bitrate) %ip"
 	        format_down = ""
 }
