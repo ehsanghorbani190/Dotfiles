@@ -183,7 +183,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command "i3status"
-		font pango:InconsolataGo Nerd Font Mono 12
+		font pango:GeistMono Nerd Font 10
 		tray_padding 0 
 }
 #remove title bars

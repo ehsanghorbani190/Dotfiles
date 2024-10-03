@@ -2,13 +2,13 @@
 size = 14
 
 [font.bold]
-family = "InconsolataGo Nerd Font Mono"
+family = "GeistMono Nerd Font Mono"
 
 [font.bold_italic]
-family = "InconsolataGo Nerd Font Mono"
+family = "GeistMono Nerd Font Mono"
 
 [font.italic]
-family = "InconsolataGo Nerd Font Mono"
+family = "GeistMono Nerd Font Mono"
 
 [font.normal]
-family = "InconsolataGo Nerd Font Mono"
+family = "GeistMono Nerd Font Mono"
