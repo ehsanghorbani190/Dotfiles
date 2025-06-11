@@ -1,0 +1,16 @@
+i3lock --blur 5 -ef --nofork --clock --keylayout 1 \
+--inside-color=D1B38AFF \
+--ring-color=B89B6FFF \
+--keyhl-color=8B5A2BFF \
+--bshl-color=B22222FF \
+--separator-color=00000000 \
+--insidever-color=6B8E23FF \
+--ringver-color=556B2FFF \
+--insidewrong-color=B22222FF \
+--ringwrong-color=8B5A2BFF \
+--verif-color=3A2C1AFF \
+--wrong-color=3A2C1AFF \
+--time-color=3A2C1AFF \
+--date-color=3A2C1AFF \
+--date-str="%a %d/%m" \
+--layout-color=3A2C1AFF;
