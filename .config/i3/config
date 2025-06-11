@@ -225,7 +225,7 @@ bindsym $mod+Ctrl+l exec --no-startup-id i3lock --blur 5 -ef --nofork --clock --
 #redshift for warmer colors
 exec --no-startup-id redshift-qt -l 36.310699:59.599457
 
-exec --no-startup-id obsidian
+# exec --no-startup-id obsidian
 exec --no-startup-id blueman-applet
 
 #for auth dialogs
