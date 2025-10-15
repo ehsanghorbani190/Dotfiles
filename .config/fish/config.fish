@@ -3,3 +3,4 @@ if status is-interactive
 end
 
 thefuck --alias | source
+ fish_vi_key_bindings
