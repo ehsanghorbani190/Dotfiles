@@ -1,0 +1,11 @@
+[user]
+	name = Ehsan Ghorbani
+	email = t1m3runn3r2359@protonmail.com
+[diff]
+	tool = nvimdiff
+[alias]
+    dl = -c diff.external=difft log -p --ext-diff
+
+    ds = -c diff.external=difft show --ext-diff
+
+    dft = -c diff.external=difft diff
