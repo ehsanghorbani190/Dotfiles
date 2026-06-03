@@ -1,0 +1,468 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "cli_default_open_behavior": "existing_window",
+  "diff_view_style": "unified",
+  "project_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    },
+    "cline": {
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "kimi": {
+      "type": "registry"
+    },
+    "kilo": {
+      "type": "registry"
+    }
+  },
+  "context_servers": {
+    "mcp-server-gitlab": {
+      "enabled": true,
+      "remote": false,
+      "settings": {
+        "gitlab_personal_access_token": "",
+        "gitlab_api_url": ""
+      }
+    },
+    "mcp-server-figma": {
+      "enabled": true,
+      "remote": false,
+      "settings": {
+        "figma_api_key": ""
+      }
+    },
+    "postgres-context-server": {
+      "enabled": false,
+      "remote": false,
+      "settings": {}
+    }
+  },
+  "auto_update": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": false,
+    },
+  },
+  "languages": {
+    "JavaScript": {
+      "formatter": [
+        "prettier",
+        {
+          "code_action": "source.fixAll.eslint",
+        },
+      ],
+    },
+  },
+  "diagnostics_max_severity": "error",
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": true,
+    },
+  },
+  "format_on_save": "off",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "agent": {
+    "show_turn_stats": true,
+    "single_file_review": true,
+    "sidebar_side": "right",
+    "tool_permissions": {
+      "default": "allow"
+    },
+    "dock": "left",
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "search_web": true,
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "restore_file_from_disk": true,
+          "save_file": true,
+          "open": true,
+          "grep": true,
+          "subagent": true,
+          "terminal": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {
+          "mcp-server-gitlab": {
+            "tools": {
+              "get_merge_request_conflicts": false,
+              "get_merge_request_diffs": false,
+              "get_merge_request_file_diff": false,
+              "get_merge_request_note": false,
+              "get_merge_request_notes": false,
+              "get_merge_request_version": false,
+              "get_namespace": false,
+              "get_project": false,
+              "get_project_events": false,
+              "get_repository_tree": false,
+              "get_user": false,
+              "get_users": false,
+              "health_check": false,
+              "list_branches": false,
+              "list_commit_statuses": false,
+              "list_commits": false,
+              "list_draft_notes": false,
+              "list_events": false,
+              "list_group_iterations": false,
+              "list_group_projects": false,
+              "list_issue_discussions": false,
+              "list_issue_emoji_reactions": false,
+              "list_issue_links": false,
+              "list_issue_note_emoji_reactions": false,
+              "list_issues": false,
+              "list_labels": false,
+              "list_merge_request_changed_files": false,
+              "list_merge_request_diffs": false,
+              "list_merge_request_emoji_reactions": false,
+              "list_merge_request_note_emoji_reactions": false,
+              "list_merge_request_versions": false,
+              "list_merge_request_pipelines": false,
+              "list_merge_requests": false,
+              "list_namespaces": false,
+              "list_project_members": false,
+              "list_projects": false,
+              "list_todos": false,
+              "mark_all_todos_done": false,
+              "mark_todo_done": false,
+              "merge_merge_request": false,
+              "mr_discussions": false,
+              "my_issues": false,
+              "publish_draft_note": false,
+              "push_files": false,
+              "search_repositories": false,
+              "resolve_merge_request_thread": false,
+              "unapprove_merge_request": false,
+              "update_draft_note": false,
+              "update_issue": false,
+              "update_issue_description_patch": false,
+              "update_issue_note": false,
+              "update_label": false,
+              "update_merge_request": false,
+              "update_merge_request_discussion_note": false,
+              "update_merge_request_note": false,
+              "upload_markdown": false,
+              "validate_ci_lint": false,
+              "validate_project_ci_lint": false,
+              "verify_namespace": false,
+              "whoami": false,
+              "get_merge_request_approval_state": false,
+              "get_merge_request": false,
+              "get_label": false,
+              "get_issue_link": false,
+              "get_issue": false,
+              "get_draft_note": false,
+              "get_file_contents": false,
+              "get_commit_diff": false,
+              "get_commit": false,
+              "get_branch_diffs": false,
+              "get_branch": false,
+              "fork_repository": false,
+              "download_attachment": false,
+              "discover_tools": false,
+              "delete_merge_request_note_emoji_reaction": false,
+              "delete_merge_request_note": false,
+              "delete_merge_request_emoji_reaction": false,
+              "delete_merge_request_discussion_note": false,
+              "delete_label": false,
+              "delete_issue_note_emoji_reaction": false,
+              "delete_issue_link": false,
+              "delete_issue_emoji_reaction": false,
+              "delete_issue": false,
+              "delete_draft_note": false,
+              "delete_branch": false,
+              "create_repository": false,
+              "create_or_update_file": false,
+              "create_note": false,
+              "create_merge_request_thread": false,
+              "create_merge_request_note_emoji_reaction": false,
+              "create_merge_request_note": false,
+              "create_merge_request_emoji_reaction": false,
+              "create_merge_request_discussion_note": false,
+              "create_merge_request": false,
+              "create_label": false,
+              "create_issue_note_emoji_reaction": false,
+              "create_issue_note": false,
+              "create_issue_link": false,
+              "create_issue_emoji_reaction": false,
+              "create_issue": false,
+              "create_draft_note": false,
+              "create_commit_status": false,
+              "create_branch": false,
+              "bulk_publish_draft_notes": false,
+              "approve_merge_request": false
+            }
+          },
+          "mcp-server-figma": {
+            "tools": {
+              "get_figma_data": false,
+              "download_figma_images": false
+            }
+          }
+        }
+      },
+      "minimal": {
+        "name": "Minimal",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-server-gitlab": {
+            "tools": {
+              "get_users": true,
+              "get_repository_tree": true,
+              "get_project_events": true,
+              "get_project": true,
+              "get_namespace": true,
+              "get_merge_request_version": true,
+              "get_merge_request_notes": true,
+              "get_merge_request_note": true,
+              "get_merge_request_file_diff": true,
+              "get_merge_request_diffs": true,
+              "get_merge_request_conflicts": true,
+              "get_merge_request_approval_state": true,
+              "get_merge_request": true,
+              "get_label": true,
+              "get_issue_link": true,
+              "get_issue": true,
+              "get_file_contents": true,
+              "get_draft_note": true,
+              "get_commit_diff": true,
+              "get_commit": true,
+              "get_branch_diffs": true
+            }
+          },
+          "mcp-server-figma": {
+            "tools": {
+              "get_figma_data": true,
+              "download_figma_images": true
+            }
+          }
+        }
+      },
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "search_web": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "subagent": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "mcp-server-gitlab": {
+            "tools": {
+              "bulk_publish_draft_notes": false,
+              "list_merge_request_changed_files": false,
+              "create_merge_request_note_emoji_reaction": false,
+              "create_merge_request_emoji_reaction": false,
+              "create_merge_request_discussion_note": false,
+              "update_merge_request_discussion_note": false,
+              "update_merge_request_note": false,
+              "unapprove_merge_request": false,
+              "resolve_merge_request_thread": false,
+              "list_merge_requests": false,
+              "list_merge_request_versions": false,
+              "list_merge_request_note_emoji_reactions": false,
+              "list_merge_request_emoji_reactions": false,
+              "list_merge_request_diffs": false,
+              "approve_merge_request": false,
+              "delete_merge_request_note": false,
+              "create_merge_request_thread": false,
+              "create_merge_request_note": false,
+              "get_merge_request_approval_state": false,
+              "get_merge_request_conflicts": false,
+              "get_merge_request_diffs": false,
+              "get_merge_request_file_diff": false,
+              "get_merge_request_note": false,
+              "get_merge_request_notes": false,
+              "get_merge_request_version": false,
+              "get_namespace": false,
+              "get_project": false,
+              "get_project_events": false,
+              "get_repository_tree": false,
+              "get_users": false,
+              "get_merge_request": false,
+              "get_label": false,
+              "get_issue_link": false,
+              "get_issue": false,
+              "get_file_contents": false,
+              "get_draft_note": false,
+              "get_commit_diff": false,
+              "get_commit": false,
+              "get_branch_diffs": false
+            }
+          },
+          "mcp-server-figma": {
+            "tools": {
+              "get_figma_data": false,
+              "download_figma_images": false
+            }
+          }
+        }
+      }
+    },
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "openrouter",
+      "model": "z-ai/glm-5.1",
+    },
+    "default_profile": "write",
+    "play_sound_when_agent_done": "always",
+  },
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "base_keymap": "JetBrains",
+  "vim_mode": true,
+  "buffer_font_family": "Maple Mono NF CN",
+  "buffer_font_features": {
+    "calt": true,
+  },
+  "buffer_font_weight": 500.0,
+  "ui_font_family": "Maple Mono NF CN",
+  "ui_font_size": 16,
+  "buffer_font_size": 20.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Fleet Light",
+    "dark": "XY-Zed",
+  },
+  // "proxy": "http://127.0.0.1:3128",
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    },
+    "jdtls": {
+      "initialization_options": {
+        "bundles": [],
+        "settings": {
+          "java": {
+            "configuration": {
+              "updateBuildConfiguration": "interactive",
+              "maven": {
+                "userSettings": null,
+              },
+            },
+            "trace": {
+              "server": "verbose",
+            },
+            "saveActions": {
+              "organizeImports": true,
+            },
+            "maven": {
+              "downloadSources": true,
+            },
+            "import": {
+              "maven": {
+                "enabled": true,
+              },
+              "exclusions": [
+                "**/node_modules/**",
+                "**/.metadata/**",
+                "**/archetype-resources/**",
+                "**/META-INF/maven/**",
+                "/**/test/**",
+              ],
+            },
+            "jdt": {
+              "ls": {
+                "lombokSupport": {
+                  "enabled": true,
+                },
+              },
+            },
+            "referencesCodeLens": {
+              "enabled": true,
+            },
+            "signatureHelp": {
+              "enabled": true,
+            },
+            "implementationsCodeLens": {
+              "enabled": true,
+            },
+            "format": {
+              "enabled": true,
+            },
+            "contentProvider": {
+              "preferred": null,
+            },
+            "autobuild": {
+              "enabled": false,
+            },
+            "completion": {
+              "favoriteStaticMembers": [
+                "org.junit.Assert.*",
+                "org.junit.Assume.*",
+                "org.junit.jupiter.api.Assertions.*",
+                "org.junit.jupiter.api.Assumptions.*",
+                "org.junit.jupiter.api.DynamicContainer.*",
+                "org.junit.jupiter.api.DynamicTest.*",
+              ],
+              "importOrder": ["java", "javax", "com", "org"],
+            },
+          },
+        },
+      },
+    },
+  },
+}
