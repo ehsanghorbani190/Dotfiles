@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+# yadm bootstrap - auto-run by `yadm clone` right after cloning the dotfiles repo.
+set -euo pipefail
+
+STEP=0
+TOTAL=18
+log() { STEP=$((STEP+1)); printf '\n\033[1;36m[%d/%d] %s\033[0m\n' "$STEP" "$TOTAL" "$1"; }
+
+if [[ $EUID -eq 0 ]]; then
+  echo "Do not run this as root (makepkg refuses to build AUR packages as root)." >&2
+  exit 1
+fi
+
+sudo -v
+( while true; do sudo -n true; sleep 60; kill -0 "$$" 2>/dev/null || exit; done ) &
+KEEPALIVE_PID=$!
+trap 'kill "$KEEPALIVE_PID" 2>/dev/null || true' EXIT
+
+log "Enabling pacman Color + ILoveCandy"
+sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+grep -q '^Color$' /etc/pacman.conf || sudo sed -i '/^\[options\]/a Color' /etc/pacman.conf
+grep -q '^ILoveCandy$' /etc/pacman.conf || sudo sed -i '/^Color$/a ILoveCandy' /etc/pacman.conf
+
+log "Bootstrapping build tools (base-devel, git)"
+sudo pacman -Syu --needed --noconfirm base-devel git
+
+log "Building yay-bin"
+if ! command -v yay >/dev/null 2>&1; then
+  tmpdir=$(mktemp -d)
+  git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay-bin"
+  (cd "$tmpdir/yay-bin" && makepkg -si --noconfirm)
+  rm -rf "$tmpdir"
+fi
+
+log "Installing rate-mirrors"
+yay -S --needed --noconfirm rate-mirrors-bin
+
+log "Ranking and updating mirrorlist"
+rate-mirrors --save mirrorlist --disable-comments-in-file arch
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo mv mirrorlist /etc/pacman.d/mirrorlist
+
+log "Syncing pacman databases against new mirrors"
+sudo pacman -Syyu --noconfirm
+
+log "Installing pacman packages"
+PACMAN_PKGS=(
+  base-devel git os-prober
+
+  alacritty neovim micro zed typescript-language-server eslint
+  jenv jdk-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk25-openjdk
+  rustup nodejs npm deno maven lazygit difftastic
+
+  docker docker-buildx docker-compose postgresql postgis kubectl
+  rofi plank numlockx udiskie ly
+
+  ntfs-3g
+  squid proxychains-ng openssh keychain openvpn
+  fish curl
+
+  ripgrep bat lsd tree jq httpie pandoc-cli parallel pv progress rsync wget
+  xclip strace lsof inxi htop gtop powertop pacman-contrib
+
+  noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-liberation
+  ttf-agave-nerd otf-commit-mono-nerd otf-geist-mono-nerd ttf-lilex-nerd
+  ttf-monoid-nerd ttf-input-nerd adobe-source-sans-fonts
+
+  mpv obs-studio ffmpeg yt-dlp
+
+  chromium thunderbird telegram-desktop obsidian gimp libreoffice-still uget
+
+  opencode minio-client mitmproxy lftp gammastep
+  yadm sudo which whois tree-sitter-cli trivy sysbench stress fwupd psensor
+)
+sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
+
+log "Installing AUR packages"
+AUR_PKGS=(
+  claude-code bun-bin jdtls google-java-format
+  throne-bin hey-bin rtk
+  ventoy-bin zen-browser-bin ytdlp-gui-bin
+  minio httpie-desktop-bin
+  neofetch openvpn-update-systemd-resolved
+  maple-mono-nf-cn-unhinted vazirmatn-fonts samim-fonts shabnam-fonts tanha-fonts
+)
+yay -S --needed --noconfirm "${AUR_PKGS[@]}"
+
+log "Initializing rtk for claude code + opencode"
+rtk init --global --opencode --auto-patch
+
+log "Restoring AI skills"
+npx --yes skills add JuliusBrussee/caveman   -g -y --agent '*' --skill caveman
+npx --yes skills add vercel-labs/skills      -g -y --agent '*' --skill find-skills
+npx --yes skills add anthropics/skills       -g -y --agent '*' --skill frontend-design skill-creator
+npx --yes skills add dietrichgebert/ponytail -g -y --agent '*' --skill ponytail ponytail-audit ponytail-debt ponytail-gain ponytail-help ponytail-review
+npx --yes skills add obra/superpowers        -g -y --agent '*' --skill brainstorming systematic-debugging
+
+log "Decrypting yadm-managed secrets"
+yadm decrypt
+
+log "Installing squid.conf"
+sudo install -o root -g root -m 644 "$HOME/.config/squid/squid.conf" /etc/squid/squid.conf
+sudo squid -k parse
+
+log "Linking and syncing ovpm"
+[[ -d "$HOME/Projects/ovpm" ]] || git clone git@github.com:ehsanghorbani190/ovpm.git "$HOME/Projects/ovpm"
+sudo ln -sf "$HOME/Projects/ovpm/ovpm" /usr/local/bin/ovpm
+"$HOME/Projects/ovpm/scripts/install-completions.sh" fish
+if [[ -d "$HOME/Rajman/vpns" ]]; then
+  mkdir -p "$HOME/.config/ovpm/profiles"
+  shopt -s nullglob
+  ovpn_files=("$HOME/Rajman/vpns/"*.ovpn)
+  shopt -u nullglob
+  if [[ ${#ovpn_files[@]} -gt 0 ]]; then
+    cp -a "${ovpn_files[@]}" "$HOME/.config/ovpm/profiles/"
+  fi
+  ovpm secret set-all "$HOME/Rajman/vpns/credentials"
+  sudo ovpm sync
+else
+  echo "warning: ~/Rajman/vpns not found - skipping ovpm sync"
+fi
+
+log "Configuring GRUB"
+grep -q '^GRUB_DISABLE_OS_PROBER=' /etc/default/grub \
+  && sudo sed -i 's/^GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub \
+  || echo 'GRUB_DISABLE_OS_PROBER=false' | sudo tee -a /etc/default/grub >/dev/null
+grep -q '^GRUB_TIMEOUT_STYLE=' /etc/default/grub \
+  && sudo sed -i 's/^GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/' /etc/default/grub \
+  || echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub >/dev/null
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+log "Populating allowed_signers"
+declare -A KEY_EMAIL=(
+  [github]="t1m3runn3r2359@protonmail.com"
+  [gitlab_rajman]="e.ghorbani@neshan.org"
+)
+: > "$HOME/.ssh/allowed_signers.new"
+for key in github gitlab_rajman; do
+  if [[ -f "$HOME/.ssh/$key.pub" ]]; then
+    echo "${KEY_EMAIL[$key]} namespaces=\"git\" $(cut -d' ' -f1,2 "$HOME/.ssh/$key.pub")" \
+      >> "$HOME/.ssh/allowed_signers.new"
+  else
+    echo "warning: ~/.ssh/$key.pub not found - skipping"
+  fi
+done
+[[ -f "$HOME/.ssh/allowed_signers" ]] && cat "$HOME/.ssh/allowed_signers" >> "$HOME/.ssh/allowed_signers.new"
+sort -u "$HOME/.ssh/allowed_signers.new" -o "$HOME/.ssh/allowed_signers"
+rm -f "$HOME/.ssh/allowed_signers.new"
+chmod 644 "$HOME/.ssh/allowed_signers"
+
+log "Setting fish as default shell"
+FISH_BIN="$(command -v fish)"
+grep -qxF "$FISH_BIN" /etc/shells || echo "$FISH_BIN" | sudo tee -a /etc/shells >/dev/null
+sudo chsh -s "$FISH_BIN" "$USER"
+
+log "Installing fisher + fish plugins"
+fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+fish -c 'fisher update'
+
+log "Enabling services"
+sudo systemctl enable --now NetworkManager ModemManager sshd docker postgresql squid
+systemctl --user enable --now ssh-agent.socket
+
+log "Bootstrap complete - manual follow-ups:"
+cat <<'EOF'
+  - configure tide
+EOF
