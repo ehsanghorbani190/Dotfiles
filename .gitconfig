@@ -3,7 +3,7 @@
 	email = t1m3runn3r2359@protonmail.com
 	signingkey = /home/t1m3runn3r2359/.ssh/github
 
-[includeIf "gitdir:/home/t1m3runn3r2359/rajman/"]
+[includeIf "gitdir:/home/t1m3runn3r2359/Rajman/"]
 	    path = /home/t1m3runn3r2359/.gitconfig-rajman
 	
 [diff]
