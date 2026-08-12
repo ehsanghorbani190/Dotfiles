@@ -1,1 +1,3 @@
 .config/squid/squid.conf
+.ssh/config
+.gitconfig-rajman
