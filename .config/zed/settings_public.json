@@ -10,33 +10,41 @@
   "cli_default_open_behavior": "existing_window",
   "diff_view_style": "unified",
   "project_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "outline_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "collaboration_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "git_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "agent_servers": {
     "claude-acp": {
+      "default_config_options": {
+        "model": "opus[1m]",
+        "agent": "default",
+        "mode": "auto"
+      },
       "type": "registry"
     },
     "cline": {
-      "type": "registry"
+      "type": "registry",
     },
     "opencode": {
-      "type": "registry"
+      "default_config_options": {
+        "model": "anthropic/claude-opus-4-8"
+      },
+      "type": "registry",
     },
     "kimi": {
-      "type": "registry"
+      "type": "registry",
     },
     "kilo": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "context_servers": {
     "mcp-server-gitlab": {
@@ -44,21 +52,21 @@
       "remote": false,
       "settings": {
         "gitlab_personal_access_token": "",
-        "gitlab_api_url": ""
-      }
+        "gitlab_api_url": "https://gitlab.neshan.org/api/v4",
+      },
     },
     "mcp-server-figma": {
       "enabled": true,
       "remote": false,
       "settings": {
-        "figma_api_key": ""
-      }
+        "figma_api_key": "",
+      },
     },
     "postgres-context-server": {
       "enabled": false,
       "remote": false,
-      "settings": {}
-    }
+      "settings": {},
+    },
   },
   "auto_update": true,
   "diagnostics": {
@@ -67,6 +75,14 @@
     },
   },
   "languages": {
+    "Java": {
+      "formatter": {
+        "external": {
+          "command": "google-java-format",
+          "arguments": ["-"],
+        },
+      },
+    },
     "JavaScript": {
       "formatter": [
         "prettier",
@@ -96,7 +112,7 @@
     "single_file_review": true,
     "sidebar_side": "right",
     "tool_permissions": {
-      "default": "allow"
+      "default": "allow",
     },
     "dock": "left",
     "profiles": {
@@ -122,7 +138,7 @@
           "grep": true,
           "subagent": true,
           "terminal": true,
-          "thinking": true
+          "thinking": true,
         },
         "enable_all_context_servers": true,
         "context_servers": {
@@ -232,16 +248,16 @@
               "create_commit_status": false,
               "create_branch": false,
               "bulk_publish_draft_notes": false,
-              "approve_merge_request": false
-            }
+              "approve_merge_request": false,
+            },
           },
           "mcp-server-figma": {
             "tools": {
               "get_figma_data": false,
-              "download_figma_images": false
-            }
-          }
-        }
+              "download_figma_images": false,
+            },
+          },
+        },
       },
       "minimal": {
         "name": "Minimal",
@@ -270,16 +286,16 @@
               "get_draft_note": true,
               "get_commit_diff": true,
               "get_commit": true,
-              "get_branch_diffs": true
-            }
+              "get_branch_diffs": true,
+            },
           },
           "mcp-server-figma": {
             "tools": {
               "get_figma_data": true,
-              "download_figma_images": true
-            }
-          }
-        }
+              "download_figma_images": true,
+            },
+          },
+        },
       },
       "ask": {
         "name": "Ask",
@@ -295,7 +311,7 @@
           "open": true,
           "grep": true,
           "subagent": true,
-          "thinking": true
+          "thinking": true,
         },
         "enable_all_context_servers": false,
         "context_servers": {
@@ -339,27 +355,28 @@
               "get_draft_note": false,
               "get_commit_diff": false,
               "get_commit": false,
-              "get_branch_diffs": false
-            }
+              "get_branch_diffs": false,
+            },
           },
           "mcp-server-figma": {
             "tools": {
               "get_figma_data": false,
-              "download_figma_images": false
-            }
-          }
-        }
-      }
+              "download_figma_images": false,
+            },
+          },
+        },
+      },
     },
     "default_model": {
+      "effort": "medium",
       "enable_thinking": true,
-      "provider": "openrouter",
-      "model": "z-ai/glm-5.1",
+      "provider": "zed.dev",
+      "model": "gpt-5.5",
     },
-    "default_profile": "write",
+    "default_profile": "ask",
     "play_sound_when_agent_done": "always",
   },
-  "icon_theme": "Colored Zed Icons Theme Dark",
+  "icon_theme": "Bearded Icon Theme",
   "base_keymap": "JetBrains",
   "vim_mode": true,
   "buffer_font_family": "Maple Mono NF CN",
@@ -372,25 +389,25 @@
   "buffer_font_size": 20.0,
   "theme": {
     "mode": "dark",
-    "light": "Fleet Light",
-    "dark": "XY-Zed",
+    "light": "Ezio Light",
+    "dark": "Colorizer",
   },
-  // "proxy": "http://127.0.0.1:3128",
+  "proxy": "http://127.0.0.1:3128",
   "lsp": {
     "vtsls": {
       "settings": {
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
+            "enabled": "always",
+          },
         },
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
+            "enabled": "always",
+          },
+        },
       },
-      "enable_lsp_tasks": true
+      "enable_lsp_tasks": true,
     },
     "jdtls": {
       "initialization_options": {
@@ -409,9 +426,6 @@
             "saveActions": {
               "organizeImports": true,
             },
-            "maven": {
-              "downloadSources": true,
-            },
             "import": {
               "maven": {
                 "enabled": true,
@@ -424,9 +438,19 @@
                 "/**/test/**",
               ],
             },
+            "maven": {
+              "downloadSources": true,
+              "updateSnapshots": true,
+            },
+            "eclipse": {
+              "downloadSources": true,
+            },
             "jdt": {
               "ls": {
                 "lombokSupport": {
+                  "enabled": true,
+                },
+                "protobufSupport": {
                   "enabled": true,
                 },
               },
