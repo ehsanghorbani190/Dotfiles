@@ -1,19 +1,25 @@
 [user]
 	name = Ehsan Ghorbani
 	email = t1m3runn3r2359@protonmail.com
-	signingkey = /home/t1m3runn3r2359/.ssh/id_ed25519
+	signingkey = /home/t1m3runn3r2359/.ssh/github
+
+[includeIf "gitdir:/home/t1m3runn3r2359/rajman/"]
+	    path = /home/t1m3runn3r2359/.gitconfig-rajman
+	
 [diff]
 	tool = difft
+	
 [alias]
     dl = -c diff.external=difft log -p --ext-diff
-
     ds = -c diff.external=difft show --ext-diff
-
     dft = -c diff.external=difft diff
+    
 [gpg]
 	format = ssh
+	
 [commit]
 	gpgsign = true
+	
 [gpg "ssh"]
 	allowedSignersFile = /home/t1m3runn3r2359/.ssh/allowed_signers
 
